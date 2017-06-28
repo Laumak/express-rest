@@ -6,6 +6,8 @@ const users = [
   { id: 2, email: "jane@email.com", name: "Jane Doe" },
 ]
 
+const findById = id => users.find(user => user.id == id)
+
 usersRouter.route("/")
   .get((req, res) => {
     res.send({ users })
@@ -14,9 +16,8 @@ usersRouter.route("/")
 usersRouter.route("/:id")
   .get((req, res) => {
     const userId = req.params.id
-    const user = users.find(user => user.id == userId)
 
-    res.send({ user })
+    res.send({ user: findById(userId) })
   })
 
 module.exports = usersRouter

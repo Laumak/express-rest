@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Lauri Mäkinen",
   "scripts": {
-    "open:src": "nodemon --watch src",
+    "open:src": "nodemon --watch src --debug",
     "dev": "npm-run-all --parallel open:src lint:watch",
     "start": "node src",
     "lint": "esw src --color",

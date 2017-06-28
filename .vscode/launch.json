@@ -6,14 +6,10 @@
   "configurations": [
     {
       "type": "node",
-      "request": "launch",
-      "name": "nodemon",
-      "runtimeArgs": [
-        "--debug=5000"
-      ],
-      "program": "${workspaceRoot}/src/index.js",
+      "request": "attach",
+      "name": "Nodemon",
       "restart": true,
-      "port": 5000,
+      "port": 5858,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
