@@ -1,14 +1,14 @@
 {
-  "name": "express-boilerplate",
-  "version": "1.0.0",
-  "description": "Simple Expressjs server with ES6 and ESLint support.",
-  "main": "index.js",
+  "name": "express-rest",
+  "version": "0.0.1",
+  "description": "Simple Express.js app to server a restful API",
+  "main": "src/index.js",
   "license": "MIT",
   "author": "Lauri Mäkinen",
   "scripts": {
-    "open:src": "nodemon --watch src --exec \"babel-node src/index.js\"",
+    "open:src": "nodemon --watch src --exec \"node src/index.js\"",
     "dev": "npm-run-all --parallel open:src lint:watch",
-    "start": "babel-node src",
+    "start": "node src",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch"
   },
@@ -29,6 +29,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Laumak/express-boilerplate.git"
+    "url": "https://github.com/Laumak/express-rest.git"
   }
 }

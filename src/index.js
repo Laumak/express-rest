@@ -1,13 +1,14 @@
-import chalk from "chalk";
-import express from "express";
+const chalk = require("chalk")
+const express = require("express")
 
-const app = express();
-const port = process.env.PORT || 4000;
+const apiRouter = require("./routes/api")
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+const app = express()
+const port = process.env.PORT || 4000
 
 app.listen(port, () => {
-    console.log(chalk.green(`App listening on port ${port}`)); // eslint-disable-line no-console
-});
+  const message = chalk.green(`App listening on port ${port}`)
+  console.log(message) // eslint-disable-line no-console
+})
+
+app.use("/api/v0/", apiRouter)
