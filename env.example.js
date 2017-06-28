@@ -2,5 +2,7 @@
 
 module.exports = {
   // Used for hashing the generated JWT token
-  salt: "something-secret",
+  SALT: "something-secret",
+  // JWT token expiry: https://github.com/zeit/ms
+  TOKEN_EXPIRY: "5m",
 }

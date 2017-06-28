@@ -1,22 +1,25 @@
 const jwt = require("jsonwebtoken")
-const salt = require("../../env").salt
 
-const generateToken = (user = { id: 1, roles: ["admin"] }) => {
-  const { id, roles } = user
-  // jwt.sign(payload, secretOrPrivateKey, [options, callback])
-  return jwt.sign({ id, roles }, salt, { expiresIn: "5m" })
+const env = require("../../env")
+const tokenStates = {
+  NO_TOKEN: "NO_TOKEN",
+  SUCCESS: "SUCCESS"
+}
+
+const generateToken = ({ id = 1, roles = [ "admin" ] }) => {
+  return jwt.sign({ id, roles }, env.SALT, { expiresIn: env.TOKEN_EXPIRY })
 }
 
 const verifyValidity = (token) => {
-  if(!token) return "NO_TOKEN"
+  if(!token) return tokenStates.NO_TOKEN
 
   try {
-    jwt.verify(token, salt)
-    // jwt.verify(token, secretOrPublicKey, [options, callback])
-    return "SUCCESS"
+    jwt.verify(token, env.SALT)
+
+    return tokenStates.SUCCESS
   } catch(error) {
     return error.message
   }
 }
 
-module.exports = { generateToken, verifyValidity }
+module.exports = { generateToken, verifyValidity, tokenStates }
