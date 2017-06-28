@@ -9,15 +9,13 @@ const users = [
 const findById = id => users.find(user => user.id == id)
 
 usersRouter.route("/")
-  .get((req, res) => {
-    res.send({ users })
-  })
+  .get((req, res) => res.status(200).json({ users }))
 
 usersRouter.route("/:id")
   .get((req, res) => {
     const userId = req.params.id
 
-    res.send({ user: findById(userId) })
+    return res.status(200).json({ user: findById(userId) })
   })
 
 module.exports = usersRouter
