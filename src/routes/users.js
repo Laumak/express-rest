@@ -2,8 +2,8 @@ const express = require("express")
 const usersRouter = express.Router()
 
 const users = [
-  { id: 1, email: "lauri@mits.fi", name: "Lauri Mäkinen" },
-  { id: 2, email: "markus@mits.fi", name: "Markus Mäkinen" },
+  { id: 1, email: "john@email.com", name: "John Doe" },
+  { id: 2, email: "jane@email.com", name: "Jane Doe" },
 ]
 
 usersRouter.route("/")
