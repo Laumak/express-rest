@@ -1,5 +1,6 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const morgan = require("morgan")
 
 const apiRouter = require("./routes/api")
 
@@ -11,6 +12,9 @@ app.listen(port, () => {
   console.log(message) // eslint-disable-line no-console
   console.log("") // eslint-disable-line no-console
 })
+
+// HTTP request logging
+app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
 
 app.use(bodyParser.json())
 
