@@ -8,13 +8,19 @@ const tokenStates    = require("./jwt").tokenStates
 const env = require("../../env")
 
 describe("JWT generator tests", () => {
-  it("should generate a valid token if user object is given", () => {
+  it("should generate a valid token if a valid user object is given", () => {
     const user = { id: 1, roles: [ "member", "admin" ] }
     const token = generateToken(user)
 
     const decoded = jwt.verify(token, env.SALT)
 
     expect(decoded).to.have.all.keys([ "exp", "iat", ...Object.keys(user) ])
+  })
+
+  it("should fail if no valid user object given", () => {
+    const tokenState = generateToken()
+
+    expect(tokenState).to.equal(tokenStates.NO_USER)
   })
 })
 

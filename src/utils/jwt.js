@@ -3,11 +3,16 @@ const jwt = require("jsonwebtoken")
 const env = require("../../env")
 const tokenStates = {
   NO_TOKEN: "NO_TOKEN",
-  SUCCESS: "SUCCESS"
+  SUCCESS: "SUCCESS",
+  NO_USER: "NO_USER"
 }
 
-const generateToken = ({ id = 1, roles = [ "admin" ] }) => {
-  return jwt.sign({ id, roles }, env.SALT, { expiresIn: env.TOKEN_EXPIRY })
+const generateToken = (user) => {
+  if(!user || !Object.keys(user).length) {
+    return tokenStates.NO_USER
+  }
+
+  return jwt.sign({ id: user.id, roles: user.roles }, env.SALT, { expiresIn: env.TOKEN_EXPIRY })
 }
 
 const verifyValidity = (token) => {
