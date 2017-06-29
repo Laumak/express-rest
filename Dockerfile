@@ -3,8 +3,7 @@ FROM node:6.11.0
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json /app
-COPY yarn.lock /app
+COPY package.json yarn.lock /app/
 RUN yarn install
 
 COPY . /app
