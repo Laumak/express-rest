@@ -8,3 +8,9 @@ services:
     ports:
       - "4000:4000"
       - "5858:5858"
+    links:
+      - mongo
+  mongo:
+    image: mongo:3.4.5
+    ports:
+      - "27017:27017"
