@@ -9,7 +9,7 @@
       "request": "attach",
       "name": "Nodemon",
       "restart": true,
-      "port": 5858,
+      "port": 9229,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
